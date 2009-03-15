@@ -1206,13 +1206,13 @@ complete -F _svnlook -o default svnlook
 
 # Alter the following to reflect the location of this file.
 #
-{
-  # These declarations must go within braces in order to be able to silence
-  # readonly variable errors.
-  BASH_COMPLETION="${BASH_COMPLETION:-/etc/bash_completion}"
-  BASH_COMPLETION_DIR="${BASH_COMPLETION_DIR:=/etc/bash_completion.d}"
-} 2>/dev/null || :
-readonly BASH_COMPLETION BASH_COMPLETION_DIR
+#{
+#  # These declarations must go within braces in order to be able to silence
+#  # readonly variable errors.
+#  BASH_COMPLETION="${BASH_COMPLETION:$HOME/.bash_completion}"
+#  BASH_COMPLETION_DIR="${BASH_COMPLETION_DIR:=$HOME/.bash_completion.d}"
+#} 2>/dev/null || :
+#readonly BASH_COMPLETION BASH_COMPLETION_DIR
 
 # Set a couple of useful vars
 #
@@ -10430,39 +10430,39 @@ _filedir_xspec()
 		    \"${cur#[\`\"\']}\" 2>/dev/null ) \
 		    $( compgen -d -- $cur ) )
 }
-list=( $( sed -ne '/^# START exclude/,/^# FINISH exclude/p' \
-	  $BASH_COMPLETION | \
-	# read exclusion compspecs
-	(
-	while read line
-	do
-		# ignore compspecs that are commented out
-		if [ "${line#\#}" != "$line" ]; then continue; fi
-		line=${line%# START exclude*}
-		line=${line%# FINISH exclude*}
-		line=${line##*\'}
-		list=( ${list[@]:-} $line )
-	done
-	echo ${list[@]}
-	)
-     ) )
+#list=( $( sed -ne '/^# START exclude/,/^# FINISH exclude/p' \
+#	  $BASH_COMPLETION | \
+#	# read exclusion compspecs
+#	(
+#	while read line
+#	do
+#		# ignore compspecs that are commented out
+#		if [ "${line#\#}" != "$line" ]; then continue; fi
+#		line=${line%# START exclude*}
+#		line=${line%# FINISH exclude*}
+#		line=${line##*\'}
+#		list=( ${list[@]:-} $line )
+#	done
+#	echo ${list[@]}
+#	)
+#     ) )
 # remove previous compspecs
-if [ ${#list[@]} -gt 0 ]; then
-    eval complete -r ${list[@]}
-    # install new compspecs
-    eval complete -F _filedir_xspec $filenames ${list[@]}
-fi
-unset list
+#if [ ${#list[@]} -gt 0 ]; then
+#    eval complete -r ${list[@]}
+#    # install new compspecs
+#    eval complete -F _filedir_xspec $filenames ${list[@]}
+#fi
+#unset list
 
 # source completion directory definitions
-if [ -d $BASH_COMPLETION_DIR -a -r $BASH_COMPLETION_DIR -a \
-     -x $BASH_COMPLETION_DIR ]; then
-	for i in $BASH_COMPLETION_DIR/*; do
-		[[ ${i##*/} != @(*~|*.bak|*.swp|\#*\#|*.dpkg*|.rpm*) ]] &&
-			[ \( -f $i -o -h $i \) -a -r $i ] && . $i
-	done
-fi
-unset i
+#if [ -d $BASH_COMPLETION_DIR -a -r $BASH_COMPLETION_DIR -a \
+#     -x $BASH_COMPLETION_DIR ]; then
+#	for i in $BASH_COMPLETION_DIR/*; do
+#		[[ ${i##*/} != @(*~|*.bak|*.swp|\#*\#|*.dpkg*|.rpm*) ]] &&
+#			[ \( -f $i -o -h $i \) -a -r $i ] && . $i
+#	done
+#fi
+#unset i
 
 unset -f have
 unset UNAME RELEASE default dirnames filenames have nospace bashdefault \
