@@ -1,0 +1,3 @@
+if [ -f ~/.bash_common.private ]; then
+	. ~/.bash_common.private
+fi
