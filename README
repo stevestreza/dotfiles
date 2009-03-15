@@ -1,3 +1,8 @@
 This repository is meant to backup and hold onto copies of my dotfiles for various services. Feel free to use any of them however you want.
 
 These files may be considered to be in the public domain.
+
+- Notes -
+For best use, symlink these files into your home dir.
+
+etc/bash_completion should be symlinked into /usr/local/bin/
