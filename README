@@ -2,8 +2,5 @@ This repository is meant to backup and hold onto copies of my dotfiles for vario
 
 These files may be considered to be in the public domain.
 
-- Notes -
-For best use, symlink these files into your home dir.
-
-etc/bash_completion should be symlinked into /usr/local/bin/
-etc/git-completion.bash should be symlinked into ~/.git-completion.bash
+- Install -
+To install, just run the setup script within the etc folder.
