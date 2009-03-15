@@ -1,11 +1,9 @@
+#import common values
 if [ -f ~/.bash_common ]; then
 	. ~/.bash_common
 fi
 
-export PATH="$PATH:/usr/local/bin:/opt/local/bin:/sw/bin:~/.bin"
-export SVN_EDITOR="vim"
-
-export PYTHONPATH="/opt/local/lib:$PYTHONPATH"
+# rickrolls the machine. srsly.
 alias rickroll='open http://www.youtube.com/watch?v=oHg5SJYRHA0'
 
 # Open the Twitter Fluid instance with the WebKit nightly's framework instead of system-supplied

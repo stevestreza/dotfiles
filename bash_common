@@ -1,3 +1,19 @@
 if [ -f ~/.bash_common.private ]; then
 	. ~/.bash_common.private
 fi
+
+# auto-completion is not case sensitive anymore
+set completion-ignore-case On
+
+# Tab completion for sudo
+complete -cf sudo
+
+# set paths for MacPorts
+export PATH="$PATH:/opt/local/bin"
+export MANPATH="$PATH:/opt/local/share/man"
+
+export PATH="$PATH:/usr/local/bin:/sw/bin:~/.bin"
+export SVN_EDITOR="vim"
+
+# set paths for custom versions of Python
+export PYTHONPATH="/opt/local/lib:$PYTHONPATH"
