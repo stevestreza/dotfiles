@@ -10464,9 +10464,6 @@ if [ -d $BASH_COMPLETION_DIR -a -r $BASH_COMPLETION_DIR -a \
 fi
 unset i
 
-# source user completion file
-[ $BASH_COMPLETION != ~/.bash_completion -a -r ~/.bash_completion ] \
-	&& . ~/.bash_completion
 unset -f have
 unset UNAME RELEASE default dirnames filenames have nospace bashdefault \
       plusdirs
