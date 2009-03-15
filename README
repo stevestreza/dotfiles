@@ -6,3 +6,4 @@ These files may be considered to be in the public domain.
 For best use, symlink these files into your home dir.
 
 etc/bash_completion should be symlinked into /usr/local/bin/
+etc/git-completion.bash should be symlinked into ~/.git-completion.bash
