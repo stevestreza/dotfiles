@@ -1,3 +1,4 @@
+# Lets me include additional values such as server IPs, etc.
 if [ -f ~/.bash_common.private ]; then
 	. ~/.bash_common.private
 fi
