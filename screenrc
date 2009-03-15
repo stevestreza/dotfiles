@@ -13,3 +13,6 @@ activity ''
 
 # Sets OS X's terminal name to the name of the current screen window
 termcapinfo xterm* 'hs:ts=\\E]2;:fs=\\007:ds=\\E]2;screen\\007'
+
+# In case of ssh disconnect or any weirdness, the screen will auto detach
+autodetach on
