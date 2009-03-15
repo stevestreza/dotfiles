@@ -1,6 +1,15 @@
+# Tells screen to launch with bash.
 shell -bash
+
+# Disables screen's welcome message. I don't care.
 startup_message off
+
+# Sets screen's scroll back buffer to 1000 lines instead of 100
 defscrollback 1000
+
+# Sets the last line to display the name of windows, and a clock in the corner
 hardstatus alwayslastline '%{= wk}%?%-Lw%?%{r}(%{k}%n*%f%t%?(%u)%?%{r})%{k}%?%+Lw%?%?%= %m/%d %C%A'
 activity ''
+
+# Sets OS X's terminal name to the name of the current screen window
 termcapinfo xterm* 'hs:ts=\\E]2;:fs=\\007:ds=\\E]2;screen\\007'
