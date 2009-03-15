@@ -14,7 +14,7 @@ export PATH="$PATH:/opt/local/bin"
 export MANPATH="$PATH:/opt/local/share/man"
 
 export PATH="$PATH:/usr/local/bin:/sw/bin:~/.bin"
-export SVN_EDITOR="vim"
+export EDITOR="vim"
 
 # set paths for custom versions of Python
 export PYTHONPATH="/opt/local/lib:$PYTHONPATH"
@@ -22,6 +22,30 @@ export PYTHONPATH="/opt/local/lib:$PYTHONPATH"
 # SSH Auto Completion of Remote Hosts
 SSH_COMPLETE=( $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | egrep -v [0123456789]) )
 complete -o default -W "${SSH_COMPLETE[*]}" ssh
+
+# Get information about git and SVN
+parse_git_dirty() {
+  git-diff --quiet || echo "*"
+}
+
+parse_git_branch() {
+	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(git::\1)/"
+}
+parse_svn_branch() {
+  parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk -F / '{print "(svn::"$1 "/" $2 ")"}'
+}
+parse_svn_url() {
+  svn info 2>/dev/null | grep -e '^URL*' | sed -e 's#^URL: *\(.*\)#\1#g '
+}
+parse_svn_repository_root() {
+  svn info 2>/dev/null | grep -e '^Repository Root:*' | sed -e 's#^Repository Root: *\(.*\)#\1\/#g '
+}
+
+if [ -f $HOME/.git-completion.bash ]; then
+	. $HOME/.git-completion.bash
+fi
+
+export PS1="\[\033[00m\]\u@\[\033[01;34m\]\w \[\033[31m\]\$(__git_ps1 \"(git::%s)\")\$(parse_svn_branch) \[\033[00m\]$\[\033[00m\] "
 
 if [ -f /usr/local/bin/bash_completion ]; then
 	. /usr/local/bin/bash_completion
