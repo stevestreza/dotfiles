@@ -11,7 +11,7 @@ complete -cf sudo
 
 # set paths for MacPorts
 export PATH="$PATH:/opt/local/bin"
-export MANPATH="$PATH:/opt/local/share/man"
+export MANPATH="$MANPATH:/opt/local/share/man"
 
 export PATH="$PATH:/usr/local/bin:/sw/bin:~/.bin"
 export EDITOR="vim"
